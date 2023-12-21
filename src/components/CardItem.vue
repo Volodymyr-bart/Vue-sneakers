@@ -1,12 +1,13 @@
 <script setup>
-defineProps({
+const props = defineProps({
+  id: Number,
   title: String,
   imageUrl: String,
   price: Number,
   isFavorite: Boolean,
   isAdded: Boolean,
   onClickAdd: Function,
-  onClickFavorite: Function,
+  onClickToFavorite: Function,
 });
 </script>
 <template>
@@ -16,8 +17,8 @@ defineProps({
     <img
       :src="!isFavorite ? '/like-1.svg' : '/like-2.svg'"
       alt="like"
-      class="absolute top-0 left-0"
-      @click="onClickFavorite"
+      class="absolute top-4 left-4"
+      @click="props.onClickToFavorite"
     />
     <img :src="imageUrl" alt="Snekear" />
     <p class="mt-2">{{ title }}</p>
@@ -29,7 +30,7 @@ defineProps({
       <img
         :src="!isAdded ? '/plus.svg' : '/checked.svg'"
         alt="Add"
-        @click="onClickAdd"
+        @click="props.onClickAdd"
       />
     </div>
   </div>
