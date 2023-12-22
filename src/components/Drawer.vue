@@ -17,12 +17,14 @@ const onCreateOrder = () => {
   <div class="fixed top-0 left-0 h-full w-full bg-black z-10 opacity-70"></div>
   <div class="bg-white w-96 h-full fixed right-0 top-0 z-20 p-8 flex flex-col">
     <DrawerHead />
-    <InfoBlock
-      v-if="totalPrice === 0"
-      title="Кошик пустий"
-      description="Додайте свої товари"
-      imageUrl="/package-icon.png"
-    />
+    <div v-if="!totalPrice" class="flex h-full items-center">
+      <InfoBlock
+        title="Кошик пустий"
+        description="Додайте свої товари"
+        imageUrl="/package-icon.png"
+      />
+    </div>
+
     <CardListBasket />
     <div v-if="totalPrice" class="flex flex-col gap-4 mt-auto">
       <div class="flex gap-2">
